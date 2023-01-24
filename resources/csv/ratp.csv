@@ -12,7 +12,7 @@ Rang;Réseau;Station;Trafic;Correspondance_1;Correspondance_2;Correspondance_3;C
 102;Métro;CHARLES MICHELS;3079569;10;;;;;Paris;15
 104;Métro;COLONEL FABIEN;3043606;2;;;;;Paris;10
 107;Métro;GLACIERE;3005750;6;;;;;Paris;13
-108;Métro;RICHELIEU-DROUOT;2994510;8;9;;;;Paris;9
+108;Métro;RICHELIEU-DROUOT;2994510;8;9;;;Paris;9
 118;Métro;MENILMONTANT;2847264;2;;;;;Paris;11
 122;Métro;LES COURTILLES;2802689;13;;;;;Asnières sur Seine;
 125;Métro;PORTE DE SAINT-OUEN;2710638;13;;;;;Paris;17
