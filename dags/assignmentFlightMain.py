@@ -14,7 +14,7 @@ from time import mktime
 )
 def assignment_of_main_flight():
 
-  BASE_URL = "https://opensky-network.org/api"
+  URL = "https://opensky-network.org/api"
 
   def sinceEpoch(dateOfInput: str) -> int:
     return int(mktime(date.fromisoformat(dateOfInput).timetuple()))
@@ -34,7 +34,7 @@ def assignment_of_main_flight():
         "begin": sinceEpoch("2022-12-01"),
         "end": sinceEpoch("2022-12-02")
     }
-    flightsCDG = f"{BASE_URL}/flights/departure"
+    flightsCDG = f"{URL}/flights/departure"
     response = requests.get(flightsCDG, params=params)
     flights = json.dumps(response.json())
     print(flights)
