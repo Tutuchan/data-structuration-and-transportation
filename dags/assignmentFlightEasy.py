@@ -1,6 +1,6 @@
 # Tilak Basnet  (tilak.basnet@epita.fr)
 # Tilak Basnet  (tilak.basnet@epita.fr)
-# Note before execute the the this file install airfolw or run  docker and compose the docker file 
+# Note before execute the the this file install airfolw or run  docker and  docker composer file 
 
 import requests
 import json
