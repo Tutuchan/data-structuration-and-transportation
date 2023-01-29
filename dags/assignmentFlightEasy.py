@@ -14,7 +14,7 @@ from time import mktime
   scheduleOfinterval="0 1 * * *",  
 )
 def assignment_of_esay_flights():
-
+  URL= "https://opensky-network.org/api"
   def sinceEpoch(inputDate: str) -> int:
     return int(mktime(date.fromisoformat(inputDate).timetuple()))
 
@@ -34,7 +34,7 @@ def assignment_of_esay_flights():
         "begin": sinceEpoch("2022-12-01"),
         "end": sinceEpoch("2022-12-02")
     }
-    flightOfCDG = f"{"https://opensky-network.org/api"}/flights/departure"
+    flightOfCDG = f"{URL}/flights/departure"
     response = requests.get(flightOfCDG, params=params)
     flights = response.json()
     print("Flights Json Data :"+ json.dumps(flights))
