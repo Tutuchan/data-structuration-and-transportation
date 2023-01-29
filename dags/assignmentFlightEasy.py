@@ -37,7 +37,7 @@ def assignment_of_esay_flights():
     response = requests.get(flightOfCDG, params=params)
     flights = response.json()
     print("Flights Json Data :"+ json.dumps(flights))
-    return {"flights": flights}
+    return {"flights Data: ": flights}
 
   flights = dataRead()
   dataWrite(flights)
