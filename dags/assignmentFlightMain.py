@@ -6,15 +6,14 @@ import json
 from datetime import datetime, date
 from time import mktime
 
-
 @dag(
   schedule=None,
-  dateOfStart=datetime(2023, 1, 24),
+  start_date=datetime(2023, 1, 24),
   catchup=False
 )
 def assignment_of_main_flight():
 
-  URL = "https://opensky-network.org/api"
+  BASE_URL = "https://opensky-network.org/api"
 
   def sinceEpoch(dateOfInput: str) -> int:
     return int(mktime(date.fromisoformat(dateOfInput).timetuple()))
@@ -34,10 +33,10 @@ def assignment_of_main_flight():
         "begin": sinceEpoch("2022-12-01"),
         "end": sinceEpoch("2022-12-02")
     }
-    flightsCDG = f"{URL}/flights/departure"
+    flightsCDG = f"{BASE_URL}/flights/departure"
     response = requests.get(flightsCDG, params=params)
     flights = json.dumps(response.json())
-    print(flights)
+    print("Flights:  "+flights)
     return flights
 
 
