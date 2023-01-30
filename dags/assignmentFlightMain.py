@@ -18,16 +18,10 @@ def assignment_of_main_flight():
   def sinceEpoch(dateOfInput: str) -> int:
     return int(mktime(date.fromisoformat(dateOfInput).timetuple()))
 
-# Write the input data in the json file 
-  @task
-  def dataWrite(flights: str) -> None:
-    data = json.loads(flights)
-    with open("./dags/flightsMain.json", "w") as f:
-      json.dump(data, f)
 
 # Read data from the json file
-  @task(multple_output= True)
-  def dataRead() -> str:
+  @task
+  def read_data() -> str:
     params = {
         "airport": "LFPG", 
         "begin": sinceEpoch("2022-12-01"),
@@ -36,12 +30,16 @@ def assignment_of_main_flight():
     flightsCDG = f"{BASE_URL}/flights/departure"
     response = requests.get(flightsCDG, params=params)
     flights = json.dumps(response.json())
-    print("Flights:  "+flights)
+    print("Flights:"+flights)
     return flights
 
+# Write the input data in the json file 
+  @task
+  def write_data(flights: str) -> None:
+    data = json.loads(flights)
+    with open("./dags/flightsMain.json", "w") as f:
+      json.dump(data, f)
 
-
-  flights = dataRead()
-  dataWrite(flights)
+  write_data(read_data())
 
 _ = assignment_of_main_flight()
