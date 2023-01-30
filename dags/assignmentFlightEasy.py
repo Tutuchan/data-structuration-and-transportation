@@ -19,14 +19,14 @@ def assignment_of_esay_flights():
   # writing to file in flightseasy.json
   
   @task
-  def dataWrite(flights: dict) -> None:
+  def write_data(flights: dict) -> None:
     with open("./dags/flightsEasy.json", "w") as f:
       json.dump(flights["flights"], f)
 
 
   # Reading data from  form the flights departure
   @task(multiple_outputs=True)
-  def dataRead() -> dict:
+  def read_data() -> dict:
     params = {
         "airport": "LFPG", 
         "begin": sinceEpoch("2022-12-01"),
@@ -38,7 +38,7 @@ def assignment_of_esay_flights():
     print(json.dumps(flights))
     return {"flights": flights}
 
-  flights = dataRead()
-  dataWrite(flights)
+  flights = read_data()
+  write_data(flights)
 
 _ = assignment_of_esay_flights()
