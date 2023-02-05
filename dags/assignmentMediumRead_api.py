@@ -13,11 +13,11 @@ def read_data_from_api():
         "longitude": "6.45",
         "per_hour": "temperature"
     }
-# BASE URL for the display data on browser https://api.open-meteo.com/v1/forcast
-    forecast = f"{BASE_URL}/v1/forecast"
+# BASE URL for the display data on browser https://api.open-meteo.com/f1/forcast
+    forecast = f"{BASE_URL}/f1/forecast"
     response = requests.get(forecast, params=params)
 
-    request = response.json();
+    request = response.json()
     return request
 
 
