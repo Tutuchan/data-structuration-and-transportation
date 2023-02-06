@@ -15,8 +15,8 @@ def assignment_of_main_flight():
 
   BASE_URL = "https://opensky-network.org/api"
 
-  def sinceEpoch(dateOfInput: str) -> int:
-    return int(mktime(date.fromisoformat(dateOfInput).timetuple()))
+  def since_epoch(input_data: str) -> int:
+    return int(mktime(date.fromisoformat(input_data).timetuple()))
 
 
 # Read data from the json file
@@ -24,11 +24,11 @@ def assignment_of_main_flight():
   def read_data() -> str:
     params = {
         "airport": "LFPG", 
-        "begin": sinceEpoch("2022-12-01"),
-        "end": sinceEpoch("2022-12-02")
+        "begin": since_epoch("2022-12-01"),
+        "end": since_epoch("2022-12-02")
     }
-    flightsCDG = f"{BASE_URL}/flights/departure"
-    response = requests.get(flightsCDG, params=params)
+    flights_cdg = f"{BASE_URL}/flights/departure"
+    response = requests.get(flights_cdg, params=params)
     flights = json.dumps(response.json())
     print("Flights:"+flights)
     return flights

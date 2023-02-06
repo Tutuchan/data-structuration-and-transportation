@@ -13,8 +13,8 @@ def assignment_of_esay_flights():
 
   BASE_URL = "https://opensky-network.org/api"
 
-  def sinceEpoch(inputDate: str) -> int:
-    return int(mktime(date.fromisoformat(inputDate).timetuple()))
+  def since_epoch(input_data: str) -> int:
+    return int(mktime(date.fromisoformat(input_data).timetuple()))
 
   # writing to file in flightseasy.json
   
@@ -29,11 +29,11 @@ def assignment_of_esay_flights():
   def read_data() -> dict:
     params = {
         "airport": "LFPG", 
-        "begin": sinceEpoch("2022-12-01"),
-        "end": sinceEpoch("2022-12-02")
+        "begin": since_epoch("2022-12-01"),
+        "end": since_epoch("2022-12-02")
     }
-    flightOfCDG = f"{BASE_URL}/flights/departure"
-    response = requests.get(flightOfCDG, params=params)
+    flights_cdg = f"{BASE_URL}/flights/departure"
+    response = requests.get(flights_cdg, params=params)
     flights = response.json()
     print(json.dumps(flights))
     return {"flights": flights}
